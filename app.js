@@ -12,7 +12,9 @@ var express			=require("express"),
 	methodOverride	=require("method-override");
 var	commentRoutes		=require("./routes/comments"),
 	campgroundRoutes	=require("./routes/campgrounds"),
-	authRoutes			=require("./routes/auth");
+	authRoutes			=require("./routes/auth"),
+    reviewRoutes     	= require("./routes/reviews");
+
 /*mongoose.connect("mongodb+srv://swetharamagiri:kcEupqhkjmuFYvye@cluster0-r66ka.mongodb.net/<dbname>?retryWrites=true&w=majority", {
 	useNewUrlParser: true,
 	useCreateIndex: true
@@ -54,6 +56,8 @@ app.use(function(req,res,next){
 app.use("/campgrounds",campgroundRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 app.use(authRoutes);
+app.use("/campgrounds/:id/reviews", reviewRoutes);
+
 
 var port = process.env.PORT || 3000;
 app.listen(port,process.env.IP, function () {
